@@ -11,6 +11,7 @@ func longestCommonPrefix(strs []string) string {
 		return strs[0]
 	}
 
+	// sort by length , the smalest one is at the front
 	sort.Slice(strs, func(i, j int) bool {
 		return len(strs[i]) < len(strs[j])
 	})
@@ -19,7 +20,7 @@ func longestCommonPrefix(strs []string) string {
 
 	for i := range strs[0] {
 
-		for _, s := range strs {
+		for _, s := range strs[1:] {
 
 			if s[i] != strs[0][i] {
 
