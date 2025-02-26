@@ -23,3 +23,13 @@ class Solution:
             max_length = max(max_length, (r-l)+1)
 
         return max_length
+
+
+""".DS_Store
+What happens at r = 3 (second 'a')?
+'a' is already in seen_map at index 0.
+
+If we blindly updated l = seen_map['a'] + 1 = 0 + 1 = 1, it would incorrectly move backward to l = 1, which is wrong.
+
+Instead, max() ensures:
+"""
