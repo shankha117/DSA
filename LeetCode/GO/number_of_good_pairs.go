@@ -48,7 +48,8 @@ func main() {
 
 	nums := []int{1, 2, 3, 1, 1, 3}
 
-	fmt.Printf("THe number of good pairs are %v ", numIdenticalPairs(nums))
+	fmt.Printf("THe number of good pairs are %v \n", numIdenticalPairs(nums))
+
 	fmt.Printf("THe number of good pairs are %v ", numIdenticalPairs2(nums))
 
 }
