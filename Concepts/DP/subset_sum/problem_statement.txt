@@ -1,0 +1,60 @@
+Sure! Here's the **problem statement** for the **Subset Sum Problem**:
+
+---
+
+### 🧩 Problem Statement: Subset Sum
+
+Given a list of integers `nums` and a target integer `target`, determine whether there exists a **subset** of `nums` whose elements sum up to exactly `target`.
+
+You may assume:
+
+* Each number in the input list can be used **at most once**.
+* All numbers in `nums` are **non-negative integers**.
+
+---
+
+### 📥 Input
+
+* `nums` (`List[int]`): A list of non-negative integers.
+* `target` (`int`): The target sum to achieve.
+
+---
+
+### 📤 Output
+
+* `True` if there exists a subset of `nums` that sums up to `target`.
+* `False` otherwise.
+
+---
+
+### 🧠 Example 1
+
+```python
+Input: nums = [3, 34, 4, 12, 5, 2], target = 9
+Output: True
+Explanation: Subset [4, 5] sums to 9.
+```
+
+---
+
+### 🧠 Example 2
+
+```python
+Input: nums = [1, 2, 3, 7], target = 6
+Output: True
+Explanation: Subset [1, 2, 3] sums to 6.
+```
+
+---
+
+### 🧠 Example 3
+
+```python
+Input: nums = [2, 3, 7, 8, 10], target = 27
+Output: False
+Explanation: No subset sums to 27.
+```
+
+---
+
+Let me know if you'd like constraints, variations (e.g., count number of subsets), or the knapsack-style extension.

@@ -1,0 +1,47 @@
+Absolutely! Here's the **problem statement** and a **Python test suite using `unittest`** for the **Count Subsets with a Given Sum** problem.
+
+---
+
+### 🧩 Problem Statement: Count of Subsets with Given Sum
+
+Given an array of positive integers `nums` and a target sum `target`, return the **number of distinct subsets** of `nums` that sum up to exactly `target`.
+
+You may assume:
+
+* Each element can be used **at most once** (i.e., no repetition).
+* Subsets are counted uniquely based on the indices of elements used.
+
+---
+
+### 📥 Input
+
+* `nums` (`List[int]`): A list of **positive integers**.
+* `target` (`int`): The target sum to achieve.
+
+---
+
+### 📤 Output
+
+* An integer representing the **number of subsets** that sum to `target`.
+
+---
+
+### 🧠 Example 1
+
+```python
+Input: nums = [2, 3, 5, 6, 8, 10], target = 10
+Output: 3
+Explanation: Subsets are [2, 8], [10], [5, 3, 2]
+```
+
+---
+
+### 🧠 Example 2
+
+```python
+Input: nums = [1, 2, 3, 3], target = 6
+Output: 3
+Explanation: Subsets are [1, 2, 3], [3, 3], [1, 2, 3] (distinct by index).
+```
+
+---
