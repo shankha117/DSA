@@ -1,0 +1,95 @@
+### ✅ Problem Statement: Minimum Subset Sum Difference
+
+Given a list of positive integers, divide it into **two subsets** such that the **absolute difference** between their sums is minimized. Return the **minimum possible difference**.
+
+#### Constraints:
+
+* `1 <= len(nums) <= 100`
+* `1 <= nums[i] <= 1000`
+
+---
+
+### ✅ Example
+
+```python
+Input: nums = [1, 6, 11, 5]
+Output: 1
+
+Explanation:
+Subset1 = [1, 5, 6] => sum = 12
+Subset2 = [11]      => sum = 11
+Difference = abs(12 - 11) = 1
+```
+
+
+
+Great question! Let's break it down carefully.
+
+---
+
+## 🎯 Problem: **Minimum Subset Sum Difference**
+
+You're given a set of positive integers.
+Your goal is to partition them into two subsets **such that the absolute difference of their sums is minimized.**
+
+---
+
+## 🤔 Why Use `half = total // 2`?
+
+Let’s denote:
+
+* Total sum of the array = `S`
+* Two subsets: `S1` and `S2`, such that `S1 + S2 = S`
+* We want to **minimize `abs(S1 - S2)`**
+
+Let’s do a little math:
+
+```
+S1 + S2 = S
+=> S2 = S - S1
+=> abs(S1 - S2) = abs(S1 - (S - S1)) = abs(2*S1 - S)
+```
+
+So minimizing `abs(S1 - S2)` is **equivalent to minimizing `abs(S - 2*S1)`**
+
+That means:
+✅ You want to pick a subset with sum `S1` such that `S1` is as **close as possible** to `S // 2`.
+
+---
+
+## 🔍 Why is `half = S // 2` the target?
+
+Because if we can find a subset with sum **close to `S // 2`**, then the other subset will automatically be close to that too, and their difference will be minimal.
+
+---
+
+## 📦 Example 1
+
+```python
+nums = [1, 6, 11, 5]
+```
+
+* Total sum `S = 1 + 6 + 11 + 5 = 23`
+* `half = 23 // 2 = 11`
+
+Now we want to find a subset sum **closest to 11**.
+
+Let’s try some subset sums:
+
+* Subset `[1, 5, 6]` → sum = 12 ❌ too big
+* Subset `[1, 6, 5]` → sum = 12 ❌
+* Subset `[1, 5, 5]` → doesn't exist
+* Subset `[1, 6, 4]` → doesn't exist
+* Subset `[1, 5, 6]` → valid
+
+Actually, subset `[1, 5, 6]` = 12
+Other subset = `[11]` → sum = 11
+Difference = `|12 - 11| = 1` ✅
+
+You can also find `[1, 11] = 12` and `[5, 6] = 11`.
+
+So minimum difference = 1.
+
+SO find
+- SubsetSum(arr, sum(arr)//2 )
+- find the max J (max total) where dp[i][j] = True (means find MAX SUM which can be made with array elements )

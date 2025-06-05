@@ -1,0 +1,62 @@
+Certainly! Here's the detailed problem statement for the **Equal Sum Partition Problem**:
+
+---
+
+### 🧩 Problem Statement: Equal Sum Partition
+
+Given a list of positive integers `nums`, determine whether the list can be **partitioned into two subsets** such that the **sum of elements in both subsets is equal**.
+
+---
+
+### 📥 Input
+
+* `nums` (`List[int]`): A list of positive integers.
+
+---
+
+### 📤 Output
+
+* `True` if the list can be partitioned into two subsets with equal sum.
+* `False` otherwise.
+
+---
+
+### 🧠 Explanation
+
+This is a variation of the **Subset Sum Problem**. The goal is to check if there exists a subset whose sum is exactly half of the total sum of the array. If such a subset exists, then the remaining elements must also sum to the same value.
+
+---
+
+### 🔒 Constraints
+
+* All elements in `nums` are **positive integers**.
+* `1 <= len(nums) <= 200`
+* `1 <= nums[i] <= 10⁴`
+
+---
+
+### 🧠 Example 1
+
+```python
+Input: nums = [1, 5, 11, 5]
+Output: True
+Explanation: The array can be partitioned as [1, 5, 5] and [11].
+```
+
+---
+
+### 🧠 Example 2
+
+```python
+Input: nums = [1, 2, 3, 5]
+Output: False
+Explanation: No subset exists such that both subsets sum to the same value.
+```
+
+---
+
+### 💡 Hint
+
+Calculate the total sum. If it's **odd**, return `False` immediately. If it's **even**, try to solve a **subset sum problem** for `target = total_sum // 2`.
+
+Let me know if you want Python or Go implementations or test cases for this as well.

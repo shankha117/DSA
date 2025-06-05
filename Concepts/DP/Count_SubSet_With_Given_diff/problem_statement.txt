@@ -1,0 +1,29 @@
+### ✅ **Problem Statement**
+
+Given an array `nums` and an integer `diff`, count the number of **subsets** of `nums` that can be **partitioned into two subsets S1 and S2**, such that:
+
+```
+sum(S1) - sum(S2) = diff
+```
+
+---
+
+### ✅ **Key Insight**
+
+Let:
+
+* `total = sum(nums)`
+* `sum(S1) - sum(S2) = diff`
+* `sum(S1) + sum(S2) = total`
+
+Add both equations:
+
+```
+2 * sum(S1) = diff + total
+=> sum(S1) = (diff + total) // 2
+```
+
+So, reduce the problem to **counting the number of subsets** whose sum is `(diff + total) // 2`.
+
+📌 **Important Constraint**:
+If `(diff + total)` is **odd**, there is **no valid subset** — return `0`.

@@ -1,0 +1,9 @@
+📘 Problem Statement: Rod Cutting (Unbounded Knapsack Variant)
+You are given:
+
+A rod of length n
+
+An array prices[] of length n, where prices[i] is the price of a rod piece of length i+1
+
+You can cut the rod into any number of pieces. Your goal is to maximize the total price obtained by cutting and selling the pieces.
+You can use the same piece length multiple times (unbounded).
