@@ -1,0 +1,74 @@
+### ✅ Problem Statement: Minimum Subset Sum Difference
+
+Given a list of positive integers, divide it into two subsets such that the absolute difference between their sums is minimized. Return the minimum possible difference.
+
+#### Constraints:
+- `1 <= len(nums) <= 100`
+- `1 <= nums[i] <= 1000`
+- All numbers are positive integers
+
+---
+
+### ✅ Example
+
+```python
+Input: nums = [1, 6, 11, 5]
+Output: 1
+
+Explanation:
+Subset1 = [1, 5, 6] => sum = 12
+Subset2 = [11]      => sum = 11
+Difference = abs(12 - 11) = 1
+```
+
+---
+
+## 🎯 Goal
+
+Partition the array into two subsets `S1` and `S2` such that `|sum(S1) - sum(S2)|` is minimized.
+
+---
+
+## 🤔 Key Insight: Why target `total // 2`?
+
+Let:
+- `S = sum(nums)`
+- `S1 + S2 = S`, and we want to minimize `abs(S1 - S2)`
+
+Observe:
+```
+S2 = S - S1
+abs(S1 - S2) = abs(S1 - (S - S1)) = abs(2*S1 - S)
+```
+
+Thus, minimizing `abs(S1 - S2)` is equivalent to minimizing `abs(S - 2*S1)`.
+So the best `S1` is the achievable subset sum closest to `S // 2`.
+
+---
+
+## 🧠 Approach (0/1 Subset Sum DP)
+
+1. Compute `total = sum(nums)` and `target = total // 2`.
+2. Use DP to determine which sums up to `target` are achievable:
+   - `dp[i][j] = True` if using the first `i` elements can achieve sum `j`.
+3. Scan the last row `dp[n][j]` from `j = target` down to `0` to find the largest achievable `j`.
+4. Let `sum1 = j` and `sum2 = total - sum1`. Answer is `abs(sum2 - sum1)`.
+
+This ensures `sum1` is as close as possible to `total // 2`, minimizing the difference.
+
+---
+
+## ⏱️ Complexity
+
+- Time: `O(n * total)` where `total = sum(nums)` and `n = len(nums)`
+- Space: `O(n * total)` for the 2D DP table; can be optimized to `O(total)` with a 1D DP array
+
+---
+
+## ✅ Summary
+
+- Compute achievable subset sums up to `total // 2`
+- Pick the closest achievable sum `sum1` to `total // 2`
+- Minimum difference = `abs((total - sum1) - sum1) = total - 2 * sum1`
+
+This is a classic dynamic programming problem that reduces to a subset-sum feasibility check followed by a greedy selection of the closest sum to half of the total.

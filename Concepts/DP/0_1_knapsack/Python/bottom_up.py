@@ -7,28 +7,23 @@ from itertools import product
 
 
 def knapsack_01_bottom_up(n, W, weights, values):
+    dp = [[0] * (W + 1) for _ in range(n + 1)]
 
-    dp = [[0]*(W+1) for _ in range(n+1)]
-
-
-    for i, j in product(range(1, n+1), range(W+1)):
-
+    for i, j in product(range(1, n + 1), range(1, W + 1)):
         # If the weight of the last item is more than the remaining capacity, skip it
-        if weights[i-1] > j:
-            dp[i][j] = dp[i-1][j]
+        if weights[i - 1] > j:
+            dp[i][j] = dp[i - 1][j]
 
         else:
-
-            include = values[i-1] + dp[i-1][j-weights[i-1]]
-
-            exclude = dp[i-1][j]
-
+            include = values[i - 1] + dp[i - 1][j - weights[i - 1]]
+            exclude = dp[i - 1][j]
             dp[i][j] = max(include, exclude)
 
     return dp[n][W]
 
 
 import unittest
+
 
 class TestKnapsack01(unittest.TestCase):
     def test_case_1(self):
@@ -74,6 +69,5 @@ class TestKnapsack01(unittest.TestCase):
         self.assertEqual(knapsack_01_bottom_up(n, W, weights, values), 80)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

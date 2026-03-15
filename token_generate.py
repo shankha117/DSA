@@ -27,13 +27,14 @@ def get_token(client_id, client_secret):
     return response.json().get('id_token')  # or access_token, depending on API
 
 if __name__ == "__main__":
-    import argparse
+    create_token()
+    # import argparse
 
-    parser = argparse.ArgumentParser(description="Get OAuth2 token")
-    parser.add_argument("--client_id", required=True, help="OAuth client ID")
-    parser.add_argument("--client_secret", required=True, help="OAuth client secret")
+    # parser = argparse.ArgumentParser(description="Get OAuth2 token")
+    # parser.add_argument("--client_id", required=True, help="OAuth client ID")
+    # parser.add_argument("--client_secret", required=True, help="OAuth client secret")
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
 
-    token = get_token(args.client_id, args.client_secret)
-    print("Token:", token)
+    # token = get_token(args.client_id, args.client_secret)
+    # print("Token:", token)

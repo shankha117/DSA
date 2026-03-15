@@ -3,35 +3,36 @@
 
 # Each state (n, W) is computed only once and stored in the memo table.
 
+
 def knapsack_01_memo(n, W, weights, values):
-
     def solve(n, W, weights, values):
-
         if n == 0 or W == 0:
-            return 0 # this could be the max profit
+            return 0  # this could be the max profit
 
+        # if this element is already seen then return it
         if memo[n][W] != -1:
             return memo[n][W]
 
         # If the weight of the last item is more than the remaining capacity, skip it
-        if weights[n-1] > W:
-            memo[n][W] = solve(n-1, W, weights, values)
+        if weights[n - 1] > W:
+            memo[n][W] = solve(n - 1, W, weights, values)
             return memo[n][W]
 
+        include = values[n - 1] + solve(n - 1, W - weights[n - 1], weights, values)
 
-        include = values[n-1] + solve(n-1, W-weights[n-1], weights, values)
-
-        exclude = solve(n-1, W, weights, values)
+        exclude = solve(n - 1, W, weights, values)
 
         memo[n][W] = max(include, exclude)
 
         return memo[n][W]
 
-    memo = [[-1]*(W+1) for _ in range(n+1)]
+    memo = [[-1] * (W + 1) for _ in range(n + 1)]
 
-    return solve(n,W,weights, values)
+    return solve(n, W, weights, values)
+
 
 import unittest
+
 
 class TestKnapsack01(unittest.TestCase):
     def test_case_1(self):
@@ -77,6 +78,5 @@ class TestKnapsack01(unittest.TestCase):
         self.assertEqual(knapsack_01_memo(n, W, weights, values), 80)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
